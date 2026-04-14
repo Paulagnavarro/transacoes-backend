@@ -52,7 +52,7 @@ cd Sistema-de-Transacoes
 composer install
 cp .env.example .env
 
-# Configure o arquivo .env com suas credenciais do PostgreSQL
+Configure o arquivo .env com suas credenciais do PostgreSQL
 
 php artisan key:generate
 php artisan migrate --seed
