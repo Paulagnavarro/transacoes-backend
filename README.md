@@ -45,7 +45,7 @@ Crie dois bancos no PostgreSQL:
 
 ### 2. Backend (Laravel)
 
-```bash
+bash
 git clone https://github.com/Paulagnavarro/Sistema-de-Transacoes.git
 cd Sistema-de-Transacoes
 
