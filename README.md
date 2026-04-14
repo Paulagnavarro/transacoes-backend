@@ -56,7 +56,9 @@ cp .env.example .env
 Configure o arquivo .env com suas credenciais do PostgreSQL
 
 php artisan key:generate
+
 php artisan migrate --seed
+
 php artisan serve
 
 Admin inicial criado automaticamente:
