@@ -27,8 +27,8 @@ Um sistema completo de gerenciamento de transações financeiras com controle ri
 
 ## 📁 Repositórios
 
-- **Backend** → [Sistema-de-Transacoes](https://github.com/Paulagnavarro/Sistema-de-Transacoes)
-- **Frontend** → [sistema-transacoes-frontend](https://github.com/Paulagnavarro/sistema-transacoes-frontend)
+- **Backend** → [transacoes-backend](https://github.com/Paulagnavarro/transacoes-backend)
+- **Frontend** → [transacoes-frontend](https://github.com/Paulagnavarro/transacoes-frontend)
 
 ## 📋 Como Rodar o Projeto
 
