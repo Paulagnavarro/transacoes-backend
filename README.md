@@ -1,59 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Transações 💰
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Projeto Full Stack** com backend e frontend em repositórios separados.
 
-## About Laravel
+Um sistema completo de gerenciamento de transações financeiras com controle rigoroso de saldo, histórico e validações de negócio.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Funcionalidades
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Login de administrador com Sanctum
+- Cadastro, edição e listagem de clientes
+- Transações de **crédito** e **débito** (validação: débito não permite saldo negativo)
+- Perfil do cliente com **histórico completo** de transações e saldo atualizado em tempo real
+- Arquitetura totalmente separada (Backend API + Frontend SPA)
+- Testes unitários e funcionais no backend (PHPUnit)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Tecnologias
 
-## Learning Laravel
+**Backend**
+- Laravel 11+
+- PostgreSQL
+- Laravel Sanctum (autenticação via token)
+- PHPUnit + RefreshDatabase + Factories
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+**Frontend**
+- Vue.js 3 (Composition API + Vite)
+- SPA consumindo API REST
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📁 Repositórios
 
-## Laravel Sponsors
+- **Backend** → [Sistema-de-Transacoes](https://github.com/Paulagnavarro/Sistema-de-Transacoes)
+- **Frontend** → [sistema-transacoes-frontend](https://github.com/Paulagnavarro/sistema-transacoes-frontend)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📋 Como Rodar o Projeto
 
-### Premium Partners
+### Pré-requisitos
+- PHP 8.1+
+- Composer
+- Node.js 18+
+- PostgreSQL 14+
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 1. Configurar o Banco de Dados
+Crie dois bancos no PostgreSQL:
+- `transacoes_db` → ambiente de produção
+- `transacoes_test_db` → ambiente de testes
 
-## Contributing
+### 2. Backend (Laravel)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/Paulagnavarro/Sistema-de-Transacoes.git
+cd Sistema-de-Transacoes
 
-## Code of Conduct
+composer install
+cp .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Configure o arquivo .env com as credenciais do PostgreSQL.
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
 
-## Security Vulnerabilities
+Admin inicial criado automaticamente:
+E-mail: admin@exemplo.com
+Senha: 12345678
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Backend roda em: http://127.0.0.1:8000
 
-## License
+### 3. Frontend (Vue.js)
+git clone https://github.com/Paulagnavarro/sistema-transacoes-frontend.git
+cd sistema-transacoes-frontend
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+npm install
+npm run serve
+
+Frontend geralmente roda em: http://localhost:5173
+
+### 4. Como Testar
+
+Acesse o frontend
+Faça login com o administrador
+Cadastre clientes, realize créditos e débitos
+Verifique a validação de saldo negativo e o histórico no perfil do cliente
+
+Rodar os testes do backend:
+php artisan test
+
+### Segurança
+Cadastro de usuários protegido por autenticação
+Apenas administradores logados podem criar novas contas
+Autenticação via Sanctum com token
